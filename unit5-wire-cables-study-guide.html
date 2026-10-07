@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 — Wire & Cables Study Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e2e0d8;min-height:100vh}
+.hdr{background:linear-gradient(135deg,#1a0a00,#0d0d0d);border-bottom:2px solid #e67e22;padding:16px 18px}
+.hdr-sub{font-size:11px;color:#e67e22;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.hdr h1{font-size:17px;font-weight:700;color:#f5e6c8}
+.nav{display:flex;gap:5px;padding:10px 16px;background:#181410;border-bottom:1px solid #2e2010;flex-wrap:wrap}
+.nb{padding:7px 13px;border-radius:6px;border:1px solid #2e2010;background:#2e2010;color:#8a7a60;font-size:12px;font-weight:600;cursor:pointer}
+.nb.active{background:#e67e22;color:#0d0d0d;border-color:#e67e22}
+.pg{padding:14px 16px;display:none;max-width:860px}
+.pg.active{display:block}
+.psub{font-size:12px;color:#5a5040;margin-bottom:14px}
+.sec{margin-bottom:8px;background:#181410;border:1px solid #2e2010;border-radius:10px;overflow:hidden}
+.shdr{width:100%;padding:13px 16px;background:none;border:none;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;color:inherit}
+.stag{border-radius:5px;padding:2px 10px;font-size:11px;font-weight:700;margin-right:10px;white-space:nowrap}
+.stag.orange{background:#e67e22;color:#0d0d0d}
+.stag.purple{background:#8b5cf6;color:#fff}
+.stag.green{background:#22c55e;color:#0d0d0d}
+.stag.red{background:#dc2626;color:#fff}
+.stag.yellow{background:#d97706;color:#0d0d0d}
+.stag.blue{background:#3b82f6;color:#fff}
+.stag.ghost{background:#c4b89a;color:#0d0d0d}
+.st{font-size:14px;font-weight:600;color:#f5e6c8}
+.sarr{color:#5a5040;font-size:14px}
+.sbody{border-top:1px solid #2e2010;padding:4px 0 12px;display:none}
+.sbody.open{display:block}
+.ci{margin:6px 16px 0;padding:10px 14px;background:#0d0d0d;border-radius:6px;border-left:3px solid #e67e22}
+.ci.purple{border-left-color:#8b5cf6}
+.ci.green{border-left-color:#22c55e}
+.ci.red{border-left-color:#dc2626}
+.ci.yellow{border-left-color:#d97706}
+.ci.blue{border-left-color:#3b82f6}
+.ci.ghost{border-left-color:#c4b89a}
+.ch{font-size:11px;font-weight:700;color:#e67e22;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.ci.purple .ch{color:#8b5cf6}
+.ci.green .ch{color:#22c55e}
+.ci.red .ch{color:#dc2626}
+.ci.yellow .ch{color:#d97706}
+.ci.blue .ch{color:#3b82f6}
+.ci.ghost .ch{color:#c4b89a}
+.cb{font-size:13px;line-height:1.7;color:#c8b89a}
+.keybox{background:rgba(230,126,34,0.07);border:1px solid rgba(230,126,34,0.25);border-radius:8px;padding:12px 14px;margin:6px 16px 0;font-size:13px;line-height:1.9;color:#f5e6c8}
+.keybox .kl{font-size:11px;font-weight:700;color:#e67e22;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.warn{padding:10px 14px;background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.3);border-radius:8px;font-size:13px;color:#fca5a5;margin:6px 16px 0}
+.tc{margin-bottom:10px;background:#181410;border:1px solid #2e2010;border-radius:8px;padding:16px}
+.tct{font-size:14px;font-weight:600;color:#f5e6c8;margin-bottom:4px}
+.tcd{font-size:12px;color:#5a5040;margin-bottom:12px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:6px}
+.btf{background:rgba(139,92,246,0.12);color:#8b5cf6}
+.bmc{background:rgba(230,126,34,0.12);color:#e67e22}
+.btn-s{padding:8px 22px;background:#e67e22;color:#0d0d0d;border:none;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer}
+.thdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:10px}
+.ttl{font-size:15px;font-weight:700;color:#f5e6c8}
+.tds{font-size:12px;color:#5a5040;margin-top:2px}
+.bbk{padding:6px 14px;background:#2e2010;color:#8a7a60;border:1px solid #2e2010;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap}
+.pbar{margin-bottom:14px}
+.plbl{display:flex;justify-content:space-between;font-size:11px;color:#5a5040;margin-bottom:4px}
+.ptrk{background:#2e2010;border-radius:4px;height:6px}
+.pfil{background:#e67e22;border-radius:4px;height:6px;width:0%;transition:width 0.2s}
+.qcard{margin-bottom:10px;background:#181410;border:1px solid #2e2010;border-radius:8px;overflow:hidden}
+.qcard.cor{border-color:#22c55e}
+.qcard.wrg{border-color:#dc2626}
+.qtop{padding:11px 16px;border-bottom:1px solid #2e2010;display:flex;gap:8px;align-items:flex-start}
+.qnum{font-size:11px;color:#5a5040;white-space:nowrap;margin-top:2px}
+.qtfb{font-size:10px;padding:1px 6px;background:rgba(139,92,246,0.12);color:#8b5cf6;border-radius:3px;white-space:nowrap;margin-top:2px}
+.qt{font-size:13px;color:#f5e6c8;line-height:1.5}
+.opts{padding:8px 16px 12px}
+.opt{margin:4px 0;padding:8px 12px;border-radius:6px;border:1px solid #2e2010;font-size:13px;cursor:pointer;display:flex;gap:8px;align-items:flex-start;color:#c8b89a;background:transparent;width:100%;text-align:left}
+.opt.sel{background:rgba(230,126,34,0.1);border-color:#e67e22;color:#f5e6c8}
+.opt.ca{background:rgba(34,197,94,0.15);border-color:#22c55e;color:#4ade80}
+.opt.wa{background:rgba(220,38,38,0.1);border-color:#dc2626;color:#f87171}
+.ol{min-width:18px;font-weight:600;color:#5a5040}
+.ol.cl{color:#4ade80}
+.expl{margin-top:8px;padding:8px 12px;background:#0d0d0d;border-radius:6px;font-size:12px;color:#8a7a60;border-left:3px solid #e67e22}
+.expl strong{color:#e67e22}
+.bsub{padding:12px;background:#2e2010;color:#5a5040;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:not-allowed;width:100%;margin-top:4px}
+.bsub.rdy{background:#e67e22;color:#0d0d0d;cursor:pointer}
+.bbtns{display:flex;gap:8px;margin-top:4px}
+.brt{flex:1;padding:12px;background:#181410;color:#e2e0d8;border:1px solid #2e2010;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer}
+.bat{flex:1;padding:12px;background:#e67e22;color:#0d0d0d;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer}
+.sbox{margin-bottom:16px;padding:14px 18px;border-radius:8px}
+.snum{font-size:20px;font-weight:700}
+.smsg{font-size:12px;color:#5a5040;margin-top:3px}
+.spooky{font-size:11px;color:#5a5040;text-align:right;padding:4px 16px 8px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-sub">Unit 5 · Wire &amp; Cables</div>
+  <h1>🎃 Wire &amp; Cables — Study Guide &amp; Practice Tests</h1>
+</div>
+<div class="nav">
+  <button class="nb active" onclick="showPg('guide')">📖 Study Guide</button>
+  <button class="nb" onclick="showPg('tests')">📝 Practice Tests</button>
+</div>
+
+<div id="pg-guide" class="pg active">
+  <p class="psub">Tap any section to expand.</p>
+  <div id="guide-container"></div>
+</div>
+
+<div id="pg-tests" class="pg">
+  <p class="psub">10 practice tests covering all sections. Tap a test to begin.</p>
+  <div id="test-list"></div>
+</div>
+
+<div id="pg-test" class="pg">
+  <div class="thdr">
+    <div><div class="ttl" id="at-title"></div><div class="tds" id="at-desc"></div></div>
+    <button class="bbk" onclick="showTests()">← Back</button>
+  </div>
+  <div id="score-box"></div>
+  <div id="pbar-wrap" class="pbar">
+    <div class="plbl"><span>Progress</span><span id="p-txt">0/0</span></div>
+    <div class="ptrk"><div class="pfil" id="p-fil"></div></div>
+  </div>
+  <div id="q-container"></div>
+  <div id="sub-container"></div>
+</div>
+
+<script>
+const guide=[
+  {id:"g1",tag:"Wire Size",tc:"orange",title:"Wire Size & AWG Standard",items:[
+    {h:"AWG Standard",c:"",b:"Copper wire is graded for size according to the AMERICAN WIRE GAUGE (AWG) standard. Wire diameter is expressed as a WHOLE NUMBER. AWG sizes range from fine hair-like wire used in coils and small transformers to very large-diameter wire for industrial wiring."},
+    {h:"Solid vs Stranded",c:"orange",b:"Wire may be a SINGLE STRAND (solid conductor) or consist of MANY STRANDS. Each strand acts as a separate conducting unit. Conductors that are NO. 8 AWG AND LARGER are generally stranded."},
+    {h:"Minimum House Wiring Size",c:"red",b:"The CEC states that the MINIMUM CONDUCTOR SIZE permitted in house wiring is NO. 14 AWG. This is a code requirement — not a suggestion."},
+    {h:"What Determines Wire Size?",c:"",b:"The wire size used for a circuit depends on the MAXIMUM CURRENT TO BE CARRIED by that circuit."},
+  ]},
+  {id:"g2",tag:"Ampacity",tc:"yellow",title:"Ampacity",items:[
+    {h:"Definition",c:"yellow",b:"AMPACITY is defined as the current in amperes a conductor can carry CONTINUOUSLY under the conditions of use WITHOUT EXCEEDING ITS TEMPERATURE RATING. This value depends on the SQUARE MILLIMETRES AREA of the conductor."},
+    {h:"Conductor Size Range",c:"",b:"The conductor size and area range from No. 14 AWG to No. 2000 kcmil."},
+    {h:"Minimum Ampacity Rule",c:"red",b:"Conductors must have an ampacity NOT LESS THAN THE MAXIMUM LOAD they are supplying. All conductors of a specific branch circuit must have an ampacity of the branch circuit's rating."},
+  ]},
+  {id:"g3",tag:"Aluminum",tc:"ghost",title:"Aluminum Conductors",items:[
+    {h:"Conductivity vs Copper",c:"ghost",b:"The conductivity of aluminum wire is NOT AS GREAT as that of copper wire for a given size. Example: No. 8 / 90°C COPPER = 55A ampacity. No. 8 aluminum (same size) = only 45A ampacity."},
+    {h:"Higher Resistance = Greater Voltage Drop",c:"",b:"An aluminum conductor has a HIGHER RESISTANCE than a copper of the same wire size. This causes a GREATER VOLTAGE DROP — important to consider for long runs."},
+    {h:"Where It's Used",c:"ghost",b:"Although approved for branch-circuit wiring, aluminum is SELDOM USED for branch circuits. It IS widely used for: APARTMENT FEEDERS, UTILITY DISTRIBUTION SYSTEMS, and on equipment such as BALLASTS AND LUMINAIRES."},
+    {h:"Problem 1 — Corrosion",c:"red",b:"A CORROSIVE ACTION is set up when dissimilar metals (e.g., aluminum + copper) come into contact, especially if MOISTURE IS PRESENT."},
+    {h:"Problem 2 — Oxidation",c:"red",b:"Aluminum OXIDIZES as soon as it is exposed to air. If the oxidized surface is not broken through, a POOR CONNECTION results. Fix: BRUSH AN INHIBITOR onto the conductor and SCRAPE WITH A STIFF BRUSH where the connection is made — this breaks the oxidation and the inhibitor prevents further oxidation. Compression connectors usually have inhibitor paste FACTORY-INSTALLED."},
+    {h:"Problem 3 — Expansion/Contraction",c:"red",b:"Aluminum wire EXPANDS AND CONTRACTS MORE than copper wire for an equal load — another possible cause of poor connections. Crimp connectors for aluminum are usually LONGER than those for comparable copper, giving greater contact surface area."},
+  ]},
+  {id:"g4",tag:"Connections",tc:"purple",title:"Wire Connections & Connectors",items:[
+    {h:"Splicing Rule",c:"purple",b:"When splicing wires, the joints or splices shall be COVERED WITH AN INSULATION EQUIVALENT to that on the conductors being joined."},
+    {h:"Common Connector Names",c:"",b:"Wire connectors are known by many trade names: screw terminal, pressure terminal connector, marrette, wing-nut, wire-nut, scotchlok, split-bolt connector, pressure cable connector, solderless luff, solder lug."},
+    {h:"Solder Connections — NOT Permitted for Service Entrance",c:"red",b:"Solder-type lugs are not often used today. Connections that depend on solder are NOT PERMITTED for connecting service entrance conductors to service equipment. Labour costs make solder-type connections prohibitive."},
+    {h:"Solderless Connectors",c:"purple",b:"SOLDERLESS CONNECTORS (mechanical pressure type) are quite common. They establish connections by means of MECHANICAL PRESSURE."},
+    {h:"AL Marking",c:"red",b:"Only connectors marked 'AL' may be used with ALUMINUM CONDUCTORS. This marking is found on the connector itself or on/in the shipping carton."},
+    {h:"AL/CU Marking",c:"purple",b:"Connectors marked 'AL/CU' are suitable for use with ALUMINUM, COPPER, or COPPER-CLAD ALUMINUM conductors."},
+    {h:"Unmarked Connectors",c:"",b:"Connectors NOT MARKED are for use with COPPER CONDUCTORS ONLY."},
+    {h:"Mixing Conductors",c:"red",b:"Conductors made of copper, aluminum, or copper-clad aluminum may NOT BE USED IN COMBINATION in the same connector UNLESS the connector is specially identified for this purpose. Such connectors are usually LIMITED TO DRY LOCATIONS."},
+  ]},
+  {id:"g5",tag:"NM Cable",tc:"green",title:"Non-Metallic Sheathed Cable",items:[
+    {h:"What Is It?",c:"green",b:"NM cable is a FACTORY ASSEMBLY of two or more insulated conductors with an outer sheath of MOISTURE-RESISTANT, FLAME-RETARDANT NON-METALLIC MATERIAL. Available with two, three, or four current-carrying conductors, ranging from No. 14 to No. 2 for copper or aluminum."},
+    {h:"Two-Wire Cable Contents",c:"",b:"Two-wire NM cable contains: ONE BLACK, ONE WHITE, and ONE BARE BONDING CONDUCTOR (or green insulated bonding conductor)."},
+    {h:"Type NMD90",c:"green",b:"NMD90 has a FLAME-RETARDANT, MOISTURE-RESISTANT non-metallic covering. Suitable for both DRY and DAMP LOCATIONS."},
+    {h:"Type NMWU",c:"green",b:"NMWU has a FLAME-RETARDANT, MOISTURE-RESISTANT, CORROSION-RESISTANT, FUNGUS-RESISTANT covering. Designed especially for WET LOCATIONS and DIRECT BURIAL."},
+    {h:"Trade Names",c:"",b:"Electricians once referred to NM sheathed cable as ROMEX or LOOMEX."},
+    {h:"Bare Copper Conductor — Bonding Only",c:"red",b:"The BARE COPPER CONDUCTOR in NM cable is used for BONDING PURPOSES ONLY. It is NOT INTENDED FOR USE as a current-carrying circuit wire."},
+  ]},
+  {id:"g6",tag:"Armoured",tc:"red",title:"Armoured Cable",items:[
+    {h:"CEC Table & Three Types",c:"red",b:"The CEC describes armoured cable construction in TABLE D1. Three types: AC90 (commonly called 'BX'), ACWU90, and TECK90. BX was originally a General Electric trademark — now a generic term."},
+    {h:"What Is Armoured Cable?",c:"",b:"Armoured cable is an ASSEMBLY OF INSULATED CONDUCTORS in a FLEXIBLE METALLIC ENCLOSURE."},
+    {h:"AC90 — Dry Locations Only",c:"red",b:"AC90 is approved for DRY LOCATIONS ONLY."},
+    {h:"Service Entrance — Above and Below Grade",c:"red",b:"All three types may be used for SERVICE ENTRANCE ABOVE GRADE in dry locations. Only ACWU90 and TECK90 are approved for SERVICE ENTRANCE BELOW GRADE."},
+    {h:"Conductor Colour Codes",c:"",b:"Two wire = black + white + bare. Three wire = black + red + white + bare. Four wire = black + red + blue + white + bare."},
+    {h:"Bonding Wire Required",c:"red",b:"Armoured cable MUST HAVE AN INTERNAL BONDING WIRE of copper or aluminum to meet the bonding requirements of the CEC."},
+  ]},
+  {id:"g7",tag:"AC Install",tc:"blue",title:"Armoured Cable — Use & Installation",items:[
+    {h:"AC90 & TECK90 — Approved Uses",c:"blue",b:"May be used on circuits and feeders up to 600V or less. May be used for OPEN AND CONCEALED WORK IN DRY LOCATIONS. May be run through walls and partitions. May be laid on the face of MASONRY WALLS and buried in PLASTER if conductors are not larger than No. 10 AWG (for extension of existing outlets)."},
+    {h:"Securing — 300mm and 1.5m Rule",c:"red",b:"Armoured cable MUST BE SECURED WITHIN 300mm OF EVERY OUTLET BOX OR FITTING, and at intervals NOT EXCEEDING 1.5m."},
+    {h:"Bend Radius — 6× Rule",c:"red",b:"Armoured cable must NOT BE BENT so that the radius of the curve of the inner edge is LESS THAN SIX TIMES the external diameter of the cable."},
+    {h:"Anti-Short Bushing Required",c:"red",b:"Armoured cable MUST HAVE an approved FIBRE OR PLASTIC INSULATING BUSHING (anti-short) at the cable ends to protect the conductor insulation from the sharp metal armour."},
+    {h:"ACWU90 & TECK90 — Extra Locations",c:"blue",b:"These types are also approved for: UNDERGROUND INSTALLATIONS, BURYING IN MASONRY OR CONCRETE (minimum 50mm covering), LOCATIONS EXPOSED TO WEATHER, and LOCATIONS EXPOSED TO OIL, GASOLINE, OR DESTRUCTIVE MATERIALS."},
+    {h:"Removing the Armour",c:"",b:"Use a tool kit to cut through ONE OF THE RAISED CONVOLUTIONS of the cable armour. Do not cut too deep or you will cut the conductor insulation. Then BEND THE CABLE ARMOUR AT THE CUT — it will snap off easily. Always INSERT AN ANTI-SHORT BUSHING at the cable ends after removal."},
+  ]},
+];
+
+const tests=[
+  {id:"t1",title:"🎃 Test 1 — T/F: Wire Size & Ampacity",desc:"16 true/false questions",questions:[
+    {type:"tf",q:"Copper wire for electrical installations is graded according to the American Wire Gauge (AWG) standard.",opts:["True","False"],ans:0,ex:"True. Copper wire is graded for size according to the AMERICAN WIRE GAUGE (AWG) standard."},
+    {type:"tf",q:"AWG wire diameter is expressed as a decimal number.",opts:["True","False"],ans:1,ex:"False. AWG wire diameter is expressed as a WHOLE NUMBER, not a decimal."},
+    {type:"tf",q:"Conductors that are No. 8 AWG and larger are generally stranded.",opts:["True","False"],ans:0,ex:"True. Conductors No. 8 AWG AND LARGER are generally stranded."},
+    {type:"tf",q:"The minimum conductor size permitted in house wiring per the CEC is No. 12 AWG.",opts:["True","False"],ans:1,ex:"False. The CEC minimum conductor size for house wiring is NO. 14 AWG — not No. 12."},
+    {type:"tf",q:"The minimum conductor size permitted in house wiring per the CEC is No. 14 AWG.",opts:["True","False"],ans:0,ex:"True. The CEC states the MINIMUM CONDUCTOR SIZE permitted in house wiring is NO. 14 AWG."},
+    {type:"tf",q:"The wire size used for a circuit depends on the maximum current to be carried.",opts:["True","False"],ans:0,ex:"True. Wire size depends on the MAXIMUM CURRENT TO BE CARRIED by that circuit."},
+    {type:"tf",q:"Ampacity is defined as the current a conductor can carry continuously without exceeding its temperature rating.",opts:["True","False"],ans:0,ex:"True. AMPACITY is the current in amperes a conductor can carry continuously without exceeding its TEMPERATURE RATING."},
+    {type:"tf",q:"Ampacity depends on the length of the conductor.",opts:["True","False"],ans:1,ex:"False. Ampacity depends on the SQUARE MILLIMETRES AREA of the conductor — not its length."},
+    {type:"tf",q:"Conductor sizes range from No. 14 AWG to No. 2000 kcmil.",opts:["True","False"],ans:0,ex:"True. The conductor size range is from NO. 14 AWG to NO. 2000 kcmil."},
+    {type:"tf",q:"A conductor may have less ampacity than the maximum load it supplies, as long as it is close to the load.",opts:["True","False"],ans:1,ex:"False. Conductors must have ampacity NOT LESS THAN the maximum load they are supplying — distance does not change this requirement."},
+    {type:"tf",q:"All conductors of a specific branch circuit must have an ampacity equal to the branch circuit's rating.",opts:["True","False"],ans:0,ex:"True. ALL conductors of a specific branch circuit must have an ampacity of the BRANCH CIRCUIT'S RATING."},
+    {type:"tf",q:"A single-strand wire is called a solid conductor.",opts:["True","False"],ans:0,ex:"True. Wire that is a SINGLE STRAND is called a SOLID CONDUCTOR."},
+    {type:"tf",q:"Each strand in a multi-strand conductor acts as a separate conducting unit.",opts:["True","False"],ans:0,ex:"True. Each strand of wire acts as a SEPARATE CONDUCTING UNIT."},
+    {type:"tf",q:"No. 6 AWG wire is generally solid (single strand).",opts:["True","False"],ans:1,ex:"False. No. 6 AWG is larger than No. 8 AWG, so it is generally STRANDED — not solid. Conductors No. 8 AWG and larger are generally stranded."},
+    {type:"tf",q:"Ampacity depends on the square millimetres area of the conductor.",opts:["True","False"],ans:0,ex:"True. Ampacity depends on the SQUARE MILLIMETRES AREA of the conductor."},
+    {type:"tf",q:"No. 10 AWG wire is generally stranded.",opts:["True","False"],ans:1,ex:"False. No. 10 AWG is SMALLER than No. 8 AWG, so it would not necessarily be stranded. Only conductors No. 8 AWG AND LARGER are generally stranded."},
+  ]},
+  {id:"t2",title:"👻 Test 2 — MC: Wire Size & Ampacity",desc:"15 multiple-choice questions",questions:[
+    {type:"mc",q:"Copper wire for electrical installations is graded for size according to:",opts:["The metric system (mm)","The American Wire Gauge (AWG) standard","The Canadian Electrical Code gauge","The IEC wire standard"],ans:1,ex:"Copper wire is graded according to the AMERICAN WIRE GAUGE (AWG) standard."},
+    {type:"mc",q:"AWG wire diameter is expressed as a:",opts:["Decimal number","Fraction","Whole number","Metric measurement"],ans:2,ex:"AWG wire diameter is expressed as a WHOLE NUMBER."},
+    {type:"mc",q:"The minimum conductor size permitted in house wiring per the CEC is:",opts:["No. 12 AWG","No. 14 AWG","No. 16 AWG","No. 10 AWG"],ans:1,ex:"The CEC minimum conductor size for house wiring is NO. 14 AWG."},
+    {type:"mc",q:"Conductors No. 8 AWG and larger are generally:",opts:["Solid","Stranded","Aluminum","Coated"],ans:1,ex:"Conductors that are NO. 8 AWG AND LARGER are generally STRANDED."},
+    {type:"mc",q:"Ampacity is defined as the current a conductor can carry continuously without exceeding its:",opts:["Voltage rating","Resistance rating","Temperature rating","Length rating"],ans:2,ex:"Ampacity is the current a conductor can carry without exceeding its TEMPERATURE RATING."},
+    {type:"mc",q:"The ampacity of a conductor depends on:",opts:["The length of the conductor","The colour of the insulation","The square millimetres area of the conductor","The type of outlet box it connects to"],ans:2,ex:"Ampacity depends on the SQUARE MILLIMETRES AREA of the conductor."},
+    {type:"mc",q:"Conductor sizes range from:",opts:["No. 18 AWG to No. 1000 kcmil","No. 14 AWG to No. 2000 kcmil","No. 12 AWG to No. 500 kcmil","No. 16 AWG to No. 750 kcmil"],ans:1,ex:"Conductor sizes range from NO. 14 AWG to NO. 2000 kcmil."},
+    {type:"mc",q:"The wire size used for a circuit depends on:",opts:["The length of the run","The maximum current to be carried","The colour of the insulation","The type of outlet box"],ans:1,ex:"Wire size depends on the MAXIMUM CURRENT TO BE CARRIED by that circuit."},
+    {type:"mc",q:"A wire that is a single strand is called a:",opts:["Stranded conductor","Multi-conductor","Solid conductor","Braided conductor"],ans:2,ex:"A single-strand wire is called a SOLID CONDUCTOR."},
+    {type:"mc",q:"Conductors must have an ampacity not less than:",opts:["The minimum load they supply","The maximum load they are supplying","The average load over a 24-hour period","The rated load of the panel"],ans:1,ex:"Conductors must have ampacity NOT LESS THAN THE MAXIMUM LOAD they are supplying."},
+    {type:"mc",q:"All conductors of a specific branch circuit must have an ampacity of:",opts:["50% of the branch circuit rating","75% of the branch circuit rating","The branch circuit's rating","125% of the branch circuit rating"],ans:2,ex:"ALL conductors of a branch circuit must have an ampacity of THE BRANCH CIRCUIT'S RATING."},
+    {type:"mc",q:"No. 14 AWG wire in house wiring is significant because it is:",opts:["The largest size permitted","The minimum size permitted by the CEC","The most common stranded size","The only size approved for circuits"],ans:1,ex:"No. 14 AWG is the MINIMUM SIZE PERMITTED by the CEC for house wiring."},
+    {type:"mc",q:"Each strand in a multi-strand conductor:",opts:["Carries no current","Acts as a separate conducting unit","Reduces the ampacity of the conductor","Must be individually insulated"],ans:1,ex:"Each strand of wire acts as a SEPARATE CONDUCTING UNIT."},
+    {type:"mc",q:"What does AWG stand for?",opts:["Approved Wire Guide","American Wire Gauge","Authorized Wiring Grade","Ampacity Wire Gauge"],ans:1,ex:"AWG stands for AMERICAN WIRE GAUGE — the standard for grading copper wire size."},
+    {type:"mc",q:"Which of the following conductors would NOT generally be stranded?",opts:["No. 8 AWG","No. 4 AWG","No. 2 AWG","No. 12 AWG"],ans:3,ex:"NO. 12 AWG is smaller than No. 8 AWG, so it would generally be solid, not stranded. Conductors No. 8 AWG and larger are generally stranded."},
+  ]},
+  {id:"t3",title:"🕷️ Test 3 — T/F: Aluminum Conductors",desc:"16 true/false questions",questions:[
+    {type:"tf",q:"Aluminum wire has greater conductivity than copper wire of the same size.",opts:["True","False"],ans:1,ex:"False. The conductivity of aluminum is NOT AS GREAT as copper for a given size. Aluminum carries less current for the same wire size."},
+    {type:"tf",q:"A No. 8, 90°C copper wire has an ampacity of 55 amperes.",opts:["True","False"],ans:0,ex:"True. A NO. 8, 90°C COPPER WIRE has an ampacity of 55 amperes."},
+    {type:"tf",q:"A No. 8 aluminum wire of the same dimensions as No. 8 copper has an ampacity of 45 amperes.",opts:["True","False"],ans:0,ex:"True. A NO. 8 ALUMINUM WIRE has an ampacity of only 45 amperes — compared to 55A for the same size copper."},
+    {type:"tf",q:"Aluminum has lower resistance than copper of the same wire size.",opts:["True","False"],ans:1,ex:"False. Aluminum has HIGHER RESISTANCE than copper of the same wire size, causing greater voltage drop."},
+    {type:"tf",q:"Aluminum conductors are widely used for apartment feeders.",opts:["True","False"],ans:0,ex:"True. Although aluminum is seldom used for branch circuits, it IS WIDELY USED for APARTMENT FEEDERS and utility distribution systems."},
+    {type:"tf",q:"Aluminum conductors are commonly used for branch-circuit wiring in residential buildings.",opts:["True","False"],ans:1,ex:"False. Although aluminum is APPROVED for branch circuits, it is SELDOM USED for this application."},
+    {type:"tf",q:"A corrosive action is set up when dissimilar metals come into contact, especially if moisture is present.",opts:["True","False"],ans:0,ex:"True. CORROSIVE ACTION is set up when dissimilar metals (like aluminum and copper) come into contact, especially if MOISTURE IS PRESENT."},
+    {type:"tf",q:"Aluminum oxidizes when exposed to air, which can cause a poor connection if not addressed.",opts:["True","False"],ans:0,ex:"True. Aluminum OXIDIZES when exposed to air. If the oxidized surface is not broken through, a POOR CONNECTION results."},
+    {type:"tf",q:"When installing aluminum conductors, you should brush an inhibitor onto the conductor and scrape it with a stiff brush.",opts:["True","False"],ans:0,ex:"True. You must BRUSH AN INHIBITOR and SCRAPE WITH A STIFF BRUSH to break the oxidation and prevent further oxidation."},
+    {type:"tf",q:"Aluminum compression connectors usually have inhibitor paste factory-installed.",opts:["True","False"],ans:0,ex:"True. Aluminum connectors of the COMPRESSION TYPE usually have an INHIBITOR PASTE FACTORY-INSTALLED inside the connector."},
+    {type:"tf",q:"Aluminum wire expands and contracts less than copper wire for an equal load.",opts:["True","False"],ans:1,ex:"False. Aluminum wire EXPANDS AND CONTRACTS MORE than copper wire for an equal load — another cause of poor connections."},
+    {type:"tf",q:"Crimp connectors for aluminum conductors are usually longer than those for copper.",opts:["True","False"],ans:0,ex:"True. Crimp connectors for aluminum are LONGER than those for comparable copper, resulting in greater contact surface area."},
+    {type:"tf",q:"Aluminum is used on ballasts and luminaires.",opts:["True","False"],ans:0,ex:"True. Aluminum conductors are found on equipment such as BALLASTS AND LUMINAIRES."},
+    {type:"tf",q:"An aluminum conductor has higher resistance than copper of the same size, causing greater voltage drop.",opts:["True","False"],ans:0,ex:"True. Aluminum has HIGHER RESISTANCE, which causes GREATER VOLTAGE DROP — important to consider for long runs."},
+    {type:"tf",q:"Scraping aluminum conductors before connecting them helps prevent oxidation issues.",opts:["True","False"],ans:0,ex:"True. Scraping the conductor BREAKS THE OXIDATION, and the inhibitor keeps air from coming into contact with the conductor, preventing further oxidation."},
+    {type:"tf",q:"Aluminum conductors are widely used in utility distribution systems.",opts:["True","False"],ans:0,ex:"True. Aluminum IS widely used in UTILITY DISTRIBUTION SYSTEMS, even though it is seldom used for residential branch circuits."},
+  ]},
+  {id:"t4",title:"🕸️ Test 4 — MC: Aluminum Conductors",desc:"15 multiple-choice questions",questions:[
+    {type:"mc",q:"Compared to copper of the same size, aluminum wire has:",opts:["Greater conductivity","Less conductivity","The same conductivity","Better conductivity in wet locations"],ans:1,ex:"The conductivity of aluminum is NOT AS GREAT as copper for a given size."},
+    {type:"mc",q:"A No. 8, 90°C aluminum wire has an ampacity of:",opts:["55 amperes","50 amperes","45 amperes","40 amperes"],ans:2,ex:"A No. 8 ALUMINUM wire has an ampacity of 45 amperes (compared to 55A for the same size copper)."},
+    {type:"mc",q:"A No. 8, 90°C copper wire has an ampacity of:",opts:["45 amperes","50 amperes","55 amperes","60 amperes"],ans:2,ex:"A No. 8, 90°C COPPER WIRE has an ampacity of 55 amperes."},
+    {type:"mc",q:"Which is a common connection problem with aluminum conductors?",opts:["They are too rigid to bend","Corrosive action when dissimilar metals contact, especially with moisture","They cannot be used with wire nuts","They require special insulation"],ans:1,ex:"A CORROSIVE ACTION is set up when dissimilar metals come into contact, especially if MOISTURE IS PRESENT."},
+    {type:"mc",q:"When aluminum is exposed to air, it forms a surface layer of:",opts:["Copper oxide","Rust","Oxidation (aluminum oxide)","Moisture"],ans:2,ex:"Aluminum OXIDIZES as soon as it is exposed to air. This oxidized surface must be broken through for a good connection."},
+    {type:"mc",q:"To prevent a poor aluminum connection due to oxidation, you should:",opts:["Use copper connectors only","Brush an inhibitor and scrape with a stiff brush at the connection point","Apply heat with a torch","Use solder to seal the connection"],ans:1,ex:"You must BRUSH AN INHIBITOR onto the conductor and SCRAPE WITH A STIFF BRUSH where the connection is made."},
+    {type:"mc",q:"Compression connectors for aluminum usually have:",opts:["No paste inside","Copper plating inside","Inhibitor paste factory-installed inside","A rubber seal inside"],ans:2,ex:"Aluminum connectors of the compression type usually have an INHIBITOR PASTE FACTORY-INSTALLED inside the connector."},
+    {type:"mc",q:"Compared to copper, aluminum wire expands and contracts:",opts:["The same amount","Less for an equal load","More for an equal load","Only at high temperatures"],ans:2,ex:"Aluminum wire EXPANDS AND CONTRACTS MORE than copper wire for an equal load — a possible cause of poor connections."},
+    {type:"mc",q:"Crimp connectors for aluminum are usually _____ than those for comparable copper:",opts:["Shorter","The same length","Longer","Thinner"],ans:2,ex:"Crimp connectors for aluminum are usually LONGER than those for comparable copper, giving greater contact surface area."},
+    {type:"mc",q:"Aluminum conductors are widely used for which of the following applications?",opts:["Residential branch circuits","Apartment feeders and utility distribution systems","Service entrance above grade in dry locations only","Kitchen circuit wiring"],ans:1,ex:"Aluminum IS widely used for APARTMENT FEEDERS and UTILITY DISTRIBUTION SYSTEMS, and on ballasts and luminaires."},
+    {type:"mc",q:"Aluminum has _____ resistance than copper of the same wire size:",opts:["Lower","The same","Higher","Variable"],ans:2,ex:"Aluminum has HIGHER RESISTANCE than copper of the same size, which causes GREATER VOLTAGE DROP."},
+    {type:"mc",q:"Which of the following is a reason aluminum is NOT commonly used for residential branch circuits?",opts:["It is too expensive","Common connection problems (oxidation, corrosion, expansion)","It is not approved by the CEC","It cannot be spliced"],ans:1,ex:"Common connection problems — oxidation, corrosive action with dissimilar metals, and expansion/contraction — make aluminum less suitable for residential branch circuits."},
+    {type:"mc",q:"Resistance is particularly important to consider with aluminum for:",opts:["Short runs under 3 metres","Long runs where voltage drop matters","Underground installations only","Circuits under 15 amperes"],ans:1,ex:"Aluminum has higher resistance, so it is important to consider resistance (and resulting VOLTAGE DROP) when selecting aluminum conductors for LONG RUNS."},
+    {type:"mc",q:"Where are aluminum conductors found in equipment?",opts:["In switch boxes only","On ballasts and luminaires","In circuit breakers","In wire connectors only"],ans:1,ex:"Aluminum conductors are found on equipment such as BALLASTS AND LUMINAIRES."},
+    {type:"mc",q:"What two problems result from aluminum's tendency to oxidize?",opts:["Corrosion and increased ampacity","Poor connections and increased voltage drop at the connection","Increased conductor weight and reduced flexibility","None — oxidation is harmless"],ans:1,ex:"If the oxidized surface is not addressed, the result is a POOR CONNECTION. This can increase resistance at the connection, affecting performance."},
+  ]},
+  {id:"t5",title:"🦇 Test 5 — T/F: Wire Connections & Connector Markings",desc:"16 true/false questions",questions:[
+    {type:"tf",q:"Wire splices shall be covered with insulation equivalent to that on the conductors being joined.",opts:["True","False"],ans:0,ex:"True. When splicing wires, the joints or splices shall be COVERED WITH INSULATION EQUIVALENT to that on the conductors being joined."},
+    {type:"tf",q:"'Marrette' and 'wire-nut' are common trade names for wire connectors.",opts:["True","False"],ans:0,ex:"True. Marrette and wire-nut are both common TRADE NAMES for wire connectors (also called wire-nuts, scotchlok, wing-nut, etc.)."},
+    {type:"tf",q:"Solderless connectors establish connections by means of heat.",opts:["True","False"],ans:1,ex:"False. Solderless connectors establish connections by means of MECHANICAL PRESSURE — not heat."},
+    {type:"tf",q:"Connections that depend on solder are not permitted for service entrance conductors.",opts:["True","False"],ans:0,ex:"True. Connections that depend on SOLDER ARE NOT PERMITTED for connecting service entrance conductors to service equipment."},
+    {type:"tf",q:"Solder-type connections are widely used today because they are cost-effective.",opts:["True","False"],ans:1,ex:"False. Solder-type lugs are NOT OFTEN USED TODAY. The LABOUR COSTS make them prohibitive."},
+    {type:"tf",q:"A connector marked 'AL' may be used with aluminum conductors.",opts:["True","False"],ans:0,ex:"True. Only connectors marked 'AL' may be used with ALUMINUM CONDUCTORS."},
+    {type:"tf",q:"A connector marked 'AL/CU' may be used with copper, aluminum, or copper-clad aluminum.",opts:["True","False"],ans:0,ex:"True. Connectors marked 'AL/CU' are suitable for ALUMINUM, COPPER, or COPPER-CLAD ALUMINUM conductors."},
+    {type:"tf",q:"An unmarked connector may be used with aluminum conductors.",opts:["True","False"],ans:1,ex:"False. Connectors NOT MARKED are for COPPER CONDUCTORS ONLY. You must use a connector marked 'AL' or 'AL/CU' for aluminum."},
+    {type:"tf",q:"Unmarked connectors are for copper conductors only.",opts:["True","False"],ans:0,ex:"True. Connectors NOT MARKED are for use with COPPER CONDUCTORS ONLY."},
+    {type:"tf",q:"Copper and aluminum conductors may be combined in the same connector as long as the connector is rated for the ampacity.",opts:["True","False"],ans:1,ex:"False. Conductors of different materials may NOT BE USED IN COMBINATION in the same connector UNLESS the connector is specially identified for that purpose."},
+    {type:"tf",q:"Connectors that allow mixing of aluminum and copper conductors are usually limited to dry locations.",opts:["True","False"],ans:0,ex:"True. Connectors that allow mixing of conductor materials are usually LIMITED TO DRY LOCATIONS."},
+    {type:"tf",q:"The 'AL' or 'AL/CU' marking may be found on the connector itself or on the shipping carton.",opts:["True","False"],ans:0,ex:"True. The marking is found EITHER ON THE CONNECTOR ITSELF or on (or in) THE SHIPPING CARTON."},
+    {type:"tf",q:"'Scotchlok' is a trade name for a type of wire connector.",opts:["True","False"],ans:0,ex:"True. Scotchlok is one of many TRADE NAMES for wire connectors."},
+    {type:"tf",q:"A split-bolt connector is a type of wire connector.",opts:["True","False"],ans:0,ex:"True. A split-bolt connector is one of the many types of WIRE CONNECTORS."},
+    {type:"tf",q:"Solderless connectors are uncommon in modern electrical work.",opts:["True","False"],ans:1,ex:"False. Solderless connectors are QUITE COMMON in modern electrical work."},
+    {type:"tf",q:"Only connectors marked 'AL' may be used with aluminum conductors — even if they are used on switches and receptacles.",opts:["True","False"],ans:0,ex:"True. Just as with terminals on wiring devices (switches and receptacles), only connectors marked 'AL' may be used with aluminum conductors."},
+  ]},
+  {id:"t6",title:"🎃 Test 6 — MC: Wire Connections & NM Cable",desc:"15 multiple-choice questions",questions:[
+    {type:"mc",q:"When splicing wires, the splice must be covered with:",opts:["Electrical tape only","Insulation equivalent to that on the conductors being joined","A wire nut only","Heat-shrink tubing only"],ans:1,ex:"When splicing wires, joints shall be covered with INSULATION EQUIVALENT to that on the conductors being joined."},
+    {type:"mc",q:"Solderless connectors establish connections by means of:",opts:["Heat","Solder","Mechanical pressure","Friction only"],ans:2,ex:"Solderless connectors establish connections by means of MECHANICAL PRESSURE."},
+    {type:"mc",q:"Solder-type connections are NOT permitted for:",opts:["Branch circuit wiring","Connecting service entrance conductors to service equipment","Using with aluminum conductors","Any application"],ans:1,ex:"Connections that depend on SOLDER ARE NOT PERMITTED for connecting SERVICE ENTRANCE CONDUCTORS TO SERVICE EQUIPMENT."},
+    {type:"mc",q:"A connector marked 'AL/CU' is suitable for:",opts:["Aluminum conductors only","Copper conductors only","Aluminum, copper, or copper-clad aluminum conductors","Only dry locations with copper conductors"],ans:2,ex:"'AL/CU' marking means the connector is suitable for ALUMINUM, COPPER, or COPPER-CLAD ALUMINUM conductors."},
+    {type:"mc",q:"An unmarked wire connector should only be used with:",opts:["Aluminum conductors","Copper-clad aluminum conductors","Copper conductors","Any conductor material"],ans:2,ex:"Connectors NOT MARKED are for use with COPPER CONDUCTORS ONLY."},
+    {type:"mc",q:"Non-metallic sheathed cable is a factory assembly of conductors with an outer sheath that is:",opts:["Metal clad only","Moisture-resistant and flame-retardant non-metallic material","Rubber only","PVC only"],ans:1,ex:"NM cable has an outer sheath of MOISTURE-RESISTANT, FLAME-RETARDANT NON-METALLIC MATERIAL."},
+    {type:"mc",q:"A two-wire NM cable contains:",opts:["Two black and one white conductor","One black, one white, and one bare (or green) bonding conductor","One black and one bare bonding conductor","Two red and one white conductor"],ans:1,ex:"Two-wire NM cable contains ONE BLACK, ONE WHITE, and ONE BARE BONDING CONDUCTOR (or green insulated bonding conductor)."},
+    {type:"mc",q:"NMD90 cable is suitable for:",opts:["Wet and direct burial locations only","Dry locations only","Both dry and damp locations","Underground locations only"],ans:2,ex:"NMD90 is suitable for both DRY AND DAMP LOCATIONS."},
+    {type:"mc",q:"NMWU cable is designed especially for:",opts:["Dry locations only","Damp and dry locations","Wet and direct burial locations","Exposed wiring in industrial areas"],ans:2,ex:"NMWU is designed especially for WET LOCATIONS and DIRECT BURIAL."},
+    {type:"mc",q:"The trade names 'Romex' and 'Loomex' refer to:",opts:["Armoured cable","Non-metallic sheathed cable","Wire connectors","Aluminum conductors"],ans:1,ex:"Electricians once referred to NON-METALLIC SHEATHED CABLE as ROMEX or LOOMEX."},
+    {type:"mc",q:"The bare copper conductor in NM cable is used for:",opts:["Carrying current as the neutral conductor","Bonding purposes only","Providing a second hot conductor","Grounding the panel only"],ans:1,ex:"The BARE COPPER CONDUCTOR in NM cable is used for BONDING PURPOSES ONLY — it is not a current-carrying circuit wire."},
+    {type:"mc",q:"NM cable is available with how many current-carrying conductors?",opts:["Two only","Two or three only","Two, three, or four","One, two, or three"],ans:2,ex:"NM cable is available with TWO, THREE, OR FOUR current-carrying conductors."},
+    {type:"mc",q:"NM cable conductor sizes range from:",opts:["No. 18 to No. 6 AWG","No. 14 to No. 2 AWG","No. 10 to No. 2 AWG","No. 12 to No. 4 AWG"],ans:1,ex:"NM cable ranges from NO. 14 TO NO. 2 for copper or aluminum."},
+    {type:"mc",q:"Which NM cable type is corrosion-resistant AND fungus-resistant?",opts:["NMD90","NMWU","Both NMD90 and NMWU","Neither"],ans:1,ex:"NMWU has a flame-retardant, moisture-resistant, CORROSION-RESISTANT, and FUNGUS-RESISTANT covering. NMD90 does not have these additional properties."},
+    {type:"mc",q:"'Marrette' is a trade name for:",opts:["Armoured cable","A type of aluminum connector","A wire connector (wire nut)","A type of NM cable"],ans:2,ex:"MARRETTE is a common trade name for a WIRE CONNECTOR (wire nut/wing-nut)."},
+  ]},
+  {id:"t7",title:"💀 Test 7 — T/F: Armoured Cable",desc:"16 true/false questions",questions:[
+    {type:"tf",q:"The CEC describes armoured cable construction in Table D1.",opts:["True","False"],ans:0,ex:"True. The CEC describes the construction of armoured cable in TABLE D1."},
+    {type:"tf",q:"The three types of armoured cable listed in CEC Table D1 are AC90, ACWU90, and TECK90.",opts:["True","False"],ans:0,ex:"True. The THREE TYPES are AC90 (BX), ACWU90, and TECK90."},
+    {type:"tf",q:"'BX' is a trademarked name still exclusively owned by General Electric.",opts:["True","False"],ans:1,ex:"False. BX WAS originally a trademark of General Electric — it is now a GENERIC TERM for AC90 armoured cable."},
+    {type:"tf",q:"Armoured cable is an assembly of insulated conductors in a flexible metallic enclosure.",opts:["True","False"],ans:0,ex:"True. Armoured cable is an ASSEMBLY OF INSULATED CONDUCTORS in a FLEXIBLE METALLIC ENCLOSURE."},
+    {type:"tf",q:"AC90 is approved for both dry and wet locations.",opts:["True","False"],ans:1,ex:"False. AC90 is approved for DRY LOCATIONS ONLY."},
+    {type:"tf",q:"All three types of armoured cable may be used for service entrance above grade in dry locations.",opts:["True","False"],ans:0,ex:"True. ALL THREE TYPES (AC90, ACWU90, TECK90) may be used for service entrance ABOVE GRADE in dry locations."},
+    {type:"tf",q:"ACWU90 and TECK90 are approved for service entrance below grade.",opts:["True","False"],ans:0,ex:"True. Only ACWU90 and TECK90 are approved for SERVICE ENTRANCE BELOW GRADE."},
+    {type:"tf",q:"AC90 is approved for service entrance below grade.",opts:["True","False"],ans:1,ex:"False. AC90 is approved for DRY LOCATIONS ONLY. Only ACWU90 and TECK90 are approved for below grade service entrance."},
+    {type:"tf",q:"Armoured cable must have an internal bonding wire of copper or aluminum.",opts:["True","False"],ans:0,ex:"True. Armoured cable MUST HAVE AN INTERNAL BONDING WIRE of copper or aluminum to meet CEC bonding requirements."},
+    {type:"tf",q:"A four-wire armoured cable contains one black, one red, one blue, one white, and a bare bonding conductor.",opts:["True","False"],ans:0,ex:"True. Four-wire armoured cable = BLACK, RED, BLUE, WHITE + BARE bonding conductor."},
+    {type:"tf",q:"A three-wire armoured cable contains one black, one red, one white, and a bare bonding conductor.",opts:["True","False"],ans:0,ex:"True. Three-wire armoured cable = BLACK, RED, WHITE + BARE bonding conductor."},
+    {type:"tf",q:"Armoured cable is available in sizes from No. 14 AWG to 2000 kcmil.",opts:["True","False"],ans:0,ex:"True. Armoured cable is generally available in sizes from NO. 14 AWG TO 2000 kcmil."},
+    {type:"tf",q:"ACWU90 and TECK90 may be used in locations exposed to oil and gasoline.",opts:["True","False"],ans:0,ex:"True. ACWU90 and TECK90 are approved for locations exposed to OIL, GASOLINE, or other materials that have a destructive effect on insulation."},
+    {type:"tf",q:"Armoured cable can be used in more applications than non-metallic sheathed cable.",opts:["True","False"],ans:0,ex:"True. Armoured cable can be used in MORE APPLICATIONS than non-metallic sheathed cable."},
+    {type:"tf",q:"TECK90 may be installed in locations exposed to weather.",opts:["True","False"],ans:0,ex:"True. ACWU90 and TECK90 are approved for INSTALLATION IN ANY LOCATION EXPOSED TO WEATHER."},
+    {type:"tf",q:"A two-wire armoured cable contains one black, one white, and one bare bonding conductor.",opts:["True","False"],ans:0,ex:"True. Two-wire armoured cable = ONE BLACK, ONE WHITE + BARE bonding conductor."},
+  ]},
+  {id:"t8",title:"🕯️ Test 8 — MC: Armoured Cable & Installation Rules",desc:"15 multiple-choice questions",questions:[
+    {type:"mc",q:"AC90 armoured cable is commonly known as:",opts:["Romex","Loomex","BX","TECK"],ans:2,ex:"AC90 is commonly called 'BX' — originally a General Electric trademark, now a generic term."},
+    {type:"mc",q:"Armoured cable must be secured within _____ of every outlet box or fitting:",opts:["150mm","300mm","600mm","1m"],ans:1,ex:"Armoured cable must be secured within 300MM of every outlet box or fitting."},
+    {type:"mc",q:"Armoured cable must be secured at intervals not exceeding:",opts:["500mm","1m","1.5m","2m"],ans:2,ex:"Armoured cable must be secured at intervals NOT EXCEEDING 1.5M."},
+    {type:"mc",q:"The minimum bend radius for armoured cable is:",opts:["3 times the external diameter","4 times the external diameter","6 times the external diameter","8 times the external diameter"],ans:2,ex:"The radius of the curve of the inner edge must not be less than SIX TIMES the external diameter of the cable."},
+    {type:"mc",q:"An anti-short bushing at armoured cable ends is made of:",opts:["Metal only","Copper or aluminum","Approved fibre or plastic insulating material","Rubber"],ans:2,ex:"An APPROVED FIBRE OR PLASTIC INSULATING BUSHING (anti-short) must be installed at cable ends to protect conductor insulation."},
+    {type:"mc",q:"What is the purpose of the anti-short bushing at armoured cable ends?",opts:["To identify the cable type","To protect conductor insulation from the sharp metal armour","To hold the cable in place","To prevent corrosion of the metal armour"],ans:1,ex:"The anti-short bushing PROTECTS THE CONDUCTOR INSULATION from being cut by the sharp metal armour."},
+    {type:"mc",q:"When burying armoured cable in masonry or concrete, the minimum covering required is:",opts:["25mm","50mm","75mm","100mm"],ans:1,ex:"ACWU90 and TECK90 may be buried in masonry or concrete with a minimum of 50MM of covering."},
+    {type:"mc",q:"To remove the metal armour from armoured cable, you should cut through:",opts:["The centre of a flat section of the armour","One of the raised convolutions of the armour","The internal bonding wire","The conductor insulation"],ans:1,ex:"You should cut through ONE OF THE RAISED CONVOLUTIONS of the cable armour — not too deep, or you will cut the conductor insulation."},
+    {type:"mc",q:"After cutting the armour, to snap it off you should:",opts:["Pull it straight out","Twist it repeatedly","Bend the cable at the cut","Use a saw to finish the cut"],ans:2,ex:"BEND THE CABLE ARMOUR AT THE CUT — it will snap off easily, exposing the desired amount of conductor."},
+    {type:"mc",q:"AC90 and TECK90 may be laid on the face of masonry walls and buried in plaster when:",opts:["Conductors are not larger than No. 12 AWG","It is an extension of existing outlets and conductors are not larger than No. 10 AWG","Any conductor size is used","Only in dry locations"],ans:1,ex:"May be laid on masonry walls and buried in plaster when conductors are NOT LARGER THAN NO. 10 AWG and used for the EXTENSION OF EXISTING OUTLETS."},
+    {type:"mc",q:"Armoured cable types AC90 and TECK90 are approved for circuits and feeders of:",opts:["240V or less","347V or less","600V or less","120V or less"],ans:2,ex:"AC90 and TECK90 may be used on circuits and feeders for applications of 600 VOLTS OR LESS."},
+    {type:"mc",q:"Which armoured cable types are approved for underground installation?",opts:["AC90 only","AC90 and TECK90","ACWU90 and TECK90","All three types"],ans:2,ex:"ACWU90 AND TECK90 are approved for underground installations. AC90 is dry locations only."},
+    {type:"mc",q:"The internal bonding wire in armoured cable must be made of:",opts:["Only copper","Only aluminum","Copper or aluminum","Steel"],ans:2,ex:"The internal bonding wire must be COPPER OR ALUMINUM to meet CEC bonding requirements."},
+    {type:"mc",q:"Armoured cable may be used for open and concealed work in:",opts:["Any location","Wet locations","Dry locations","Underground locations only"],ans:2,ex:"AC90 and TECK90 may be used for open and concealed work in DRY LOCATIONS."},
+    {type:"mc",q:"How many types of armoured cable are listed in CEC Table D1?",opts:["Two","Three","Four","Five"],ans:1,ex:"CEC TABLE D1 lists THREE TYPES: AC90, ACWU90, and TECK90."},
+  ]},
+  {id:"t9",title:"🦇 Test 9 — Mixed: All Topics",desc:"20 mixed questions",questions:[
+    {type:"mc",q:"The minimum conductor size for house wiring per the CEC is:",opts:["No. 16 AWG","No. 14 AWG","No. 12 AWG","No. 10 AWG"],ans:1,ex:"The CEC minimum conductor size for house wiring is NO. 14 AWG."},
+    {type:"tf",q:"Conductors No. 8 AWG and larger are generally stranded.",opts:["True","False"],ans:0,ex:"True. Conductors NO. 8 AWG AND LARGER are generally stranded."},
+    {type:"mc",q:"A No. 8, 90°C copper wire has an ampacity of:",opts:["45A","50A","55A","60A"],ans:2,ex:"A No. 8, 90°C COPPER wire has an ampacity of 55 amperes."},
+    {type:"tf",q:"Aluminum conductors are widely used for residential branch circuits.",opts:["True","False"],ans:1,ex:"False. Aluminum is SELDOM USED for branch circuits. It IS widely used for apartment feeders and utility distribution systems."},
+    {type:"mc",q:"To address aluminum oxidation at connection points, you should:",opts:["Apply heat with a torch","Brush inhibitor and scrape with a stiff brush","Use solder to seal the connection","Use an unmarked connector"],ans:1,ex:"BRUSH AN INHIBITOR and SCRAPE WITH A STIFF BRUSH at the connection point to break oxidation and prevent further oxidation."},
+    {type:"mc",q:"A connector marked 'AL/CU' is suitable for:",opts:["Copper conductors only","Aluminum conductors only","Aluminum, copper, or copper-clad aluminum","Dry locations only"],ans:2,ex:"'AL/CU' connectors are suitable for ALUMINUM, COPPER, or COPPER-CLAD ALUMINUM conductors."},
+    {type:"tf",q:"Solder connections are not permitted for service entrance conductors.",opts:["True","False"],ans:0,ex:"True. Connections that depend on SOLDER ARE NOT PERMITTED for service entrance conductors connecting to service equipment."},
+    {type:"mc",q:"NMD90 cable is suitable for:",opts:["Wet and direct burial only","Dry locations only","Both dry and damp locations","Underground only"],ans:2,ex:"NMD90 is suitable for both DRY AND DAMP LOCATIONS."},
+    {type:"mc",q:"The trade name 'Romex' refers to:",opts:["Armoured cable","Non-metallic sheathed cable","Wire connectors","Aluminum conductors"],ans:1,ex:"ROMEX (and LOOMEX) are trade names for NON-METALLIC SHEATHED CABLE."},
+    {type:"tf",q:"The bare copper conductor in NM cable is a current-carrying circuit wire.",opts:["True","False"],ans:1,ex:"False. The bare copper conductor in NM cable is for BONDING PURPOSES ONLY — it is NOT a current-carrying circuit wire."},
+    {type:"mc",q:"AC90 is commonly called:",opts:["Romex","BX","NMWU","TECK"],ans:1,ex:"AC90 is commonly called 'BX' — originally a GE trademark, now a generic term."},
+    {type:"tf",q:"Armoured cable must be secured within 300mm of every outlet box or fitting.",opts:["True","False"],ans:0,ex:"True. Must be secured within 300MM of every outlet box or fitting, and at intervals not exceeding 1.5m."},
+    {type:"mc",q:"The minimum bend radius for armoured cable (inner edge) is:",opts:["3× external diameter","4× external diameter","6× external diameter","8× external diameter"],ans:2,ex:"The radius of the inner edge must not be less than SIX TIMES the external diameter."},
+    {type:"mc",q:"Which types of armoured cable are approved for underground installation?",opts:["AC90 only","AC90 and ACWU90","ACWU90 and TECK90","All three types"],ans:2,ex:"ACWU90 AND TECK90 are approved for underground installation. AC90 is dry locations only."},
+    {type:"tf",q:"Armoured cable must have an internal bonding wire.",opts:["True","False"],ans:0,ex:"True. Armoured cable MUST HAVE AN INTERNAL BONDING WIRE of copper or aluminum."},
+    {type:"mc",q:"NMWU cable is designed for:",opts:["Dry locations only","Damp and dry","Wet and direct burial","Industrial applications only"],ans:2,ex:"NMWU is designed for WET LOCATIONS and DIRECT BURIAL."},
+    {type:"tf",q:"An anti-short bushing is required at armoured cable ends.",opts:["True","False"],ans:0,ex:"True. An approved FIBRE OR PLASTIC INSULATING BUSHING (anti-short) MUST be installed at cable ends."},
+    {type:"mc",q:"Ampacity is the current a conductor can carry continuously without exceeding its:",opts:["Voltage rating","Length rating","Temperature rating","Resistance rating"],ans:2,ex:"Ampacity is defined as the current a conductor can carry continuously without exceeding its TEMPERATURE RATING."},
+    {type:"tf",q:"Aluminum has higher resistance than copper of the same size.",opts:["True","False"],ans:0,ex:"True. Aluminum has HIGHER RESISTANCE than copper of the same size, causing greater voltage drop."},
+    {type:"mc",q:"When removing armoured cable armour, after cutting one raised convolution you should:",opts:["Pull the armour straight off","Saw through the remaining convolutions","Bend the cable at the cut to snap it off","Use pliers to unwind the armour"],ans:2,ex:"BEND THE CABLE ARMOUR AT THE CUT — it will snap off easily, exposing the conductor."},
+  ]},
+  {id:"t10",title:"🎃 Test 10 — Final Comprehensive",desc:"20 questions — hardest version, all topics",questions:[
+    {type:"mc",q:"A No. 8, 90°C aluminum wire has an ampacity of _____, while the same size copper has an ampacity of _____:",opts:["55A and 45A","45A and 55A","50A and 60A","40A and 50A"],ans:1,ex:"No. 8 ALUMINUM = 45A. No. 8 COPPER = 55A. Aluminum has less conductivity for the same size."},
+    {type:"tf",q:"Conductors must have an ampacity not less than the maximum load they are supplying.",opts:["True","False"],ans:0,ex:"True. Conductors must have ampacity NOT LESS THAN THE MAXIMUM LOAD they are supplying."},
+    {type:"mc",q:"An unmarked wire connector is suitable for:",opts:["Aluminum conductors","Copper-clad aluminum","Copper conductors only","Any conductor type"],ans:2,ex:"Connectors NOT MARKED are for COPPER CONDUCTORS ONLY."},
+    {type:"tf",q:"NMWU cable is resistant to corrosion and fungus as well as moisture.",opts:["True","False"],ans:0,ex:"True. NMWU has a flame-retardant, moisture-resistant, CORROSION-RESISTANT, and FUNGUS-RESISTANT covering."},
+    {type:"mc",q:"Which statement about AC90 is correct?",opts:["Approved for wet locations","Approved for dry locations only","Approved for underground use","Approved for below-grade service entrance"],ans:1,ex:"AC90 is approved for DRY LOCATIONS ONLY."},
+    {type:"mc",q:"Armoured cable must be secured at intervals not exceeding:",opts:["1m","1.5m","2m","2.5m"],ans:1,ex:"Armoured cable must be secured at intervals NOT EXCEEDING 1.5M."},
+    {type:"tf",q:"The 'AL/CU' marking on a connector means it can be used with aluminum, copper, or copper-clad aluminum.",opts:["True","False"],ans:0,ex:"True. 'AL/CU' = suitable for ALUMINUM, COPPER, or COPPER-CLAD ALUMINUM."},
+    {type:"mc",q:"What is the CEC minimum conductor size for house wiring?",opts:["No. 16 AWG","No. 12 AWG","No. 14 AWG","No. 10 AWG"],ans:2,ex:"The CEC minimum is NO. 14 AWG for house wiring."},
+    {type:"mc",q:"The anti-short bushing at armoured cable ends is made of:",opts:["Metal","Copper or aluminum","Approved fibre or plastic insulating material","Rubber"],ans:2,ex:"An APPROVED FIBRE OR PLASTIC INSULATING BUSHING (anti-short) is required at cable ends."},
+    {type:"tf",q:"All three types of armoured cable (AC90, ACWU90, TECK90) may be used for service entrance above grade in dry locations.",opts:["True","False"],ans:0,ex:"True. All THREE TYPES may be used for service entrance ABOVE GRADE in dry locations."},
+    {type:"mc",q:"The purpose of the bare copper conductor in NM cable is:",opts:["To carry the neutral current","Bonding purposes only","To act as the second hot conductor","To provide additional ampacity"],ans:1,ex:"The BARE COPPER CONDUCTOR in NM cable is used for BONDING PURPOSES ONLY."},
+    {type:"mc",q:"Aluminum crimp connectors are longer than copper crimp connectors because:",opts:["Aluminum wire is larger","It provides greater contact surface area to compensate for aluminum's properties","It is required by the CEC","Aluminum connectors are cheaper to manufacture longer"],ans:1,ex:"Crimp connectors for aluminum are LONGER to provide GREATER CONTACT SURFACE AREA — compensating for aluminum's expansion/contraction and conductivity properties."},
+    {type:"tf",q:"AC90 is approved for service entrance below grade.",opts:["True","False"],ans:1,ex:"False. AC90 is dry locations only. Only ACWU90 and TECK90 are approved for service entrance BELOW GRADE."},
+    {type:"mc",q:"Ampacity depends on:",opts:["The length of the conductor","The square millimetres area of the conductor","The colour of the insulation","The type of outlet box used"],ans:1,ex:"Ampacity depends on the SQUARE MILLIMETRES AREA of the conductor."},
+    {type:"mc",q:"Which of the following is NOT a classification of NM sheathed cable?",opts:["NMD90","NMWU","AC90","None — all are NM classifications"],ans:2,ex:"AC90 is ARMOURED CABLE — not NM cable. NM cable classifications include NMD90 and NMWU."},
+    {type:"tf",q:"Aluminum wire expands and contracts more than copper for an equal load.",opts:["True","False"],ans:0,ex:"True. Aluminum EXPANDS AND CONTRACTS MORE than copper for an equal load — a common cause of poor connections."},
+    {type:"mc",q:"When removing armoured cable armour, you should cut through:",opts:["Any part of the armour","One of the raised convolutions","The internal bonding wire first","The conductor insulation"],ans:1,ex:"You should cut through ONE OF THE RAISED CONVOLUTIONS of the armour — not too deep, or you will cut the conductor insulation."},
+    {type:"mc",q:"ACWU90 and TECK90 may be buried in masonry or concrete with a minimum covering of:",opts:["25mm","50mm","75mm","100mm"],ans:1,ex:"Minimum covering is 50MM when burying in masonry or concrete during construction."},
+    {type:"tf",q:"Conductors No. 8 AWG and larger are generally solid (single strand).",opts:["True","False"],ans:1,ex:"False. Conductors NO. 8 AWG AND LARGER are generally STRANDED — not solid."},
+    {type:"mc",q:"Which statement about NMWU cable is correct?",opts:["Suitable for dry locations only","Suitable for wet locations and direct burial","The same as NMD90 but with a different colour jacket","Not approved for underground use"],ans:1,ex:"NMWU is designed especially for WET LOCATIONS AND DIRECT BURIAL."},
+  ]},
+];
+
+let curTest=null,answers={},submitted=false;
+
+function showPg(p){
+  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(e=>e.classList.remove('active'));
+  document.getElementById('pg-'+p).classList.add('active');
+  if(p==='guide')document.querySelectorAll('.nb')[0].classList.add('active');
+  if(p==='tests')document.querySelectorAll('.nb')[1].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function showTests(){
+  document.getElementById('pg-test').classList.remove('active');
+  document.getElementById('pg-tests').classList.add('active');
+  document.querySelectorAll('.nb')[1].classList.add('active');
+  curTest=null;answers={};submitted=false;
+  window.scrollTo(0,0);
+}
+
+function buildGuide(){
+  const c=document.getElementById('guide-container');
+  guide.forEach(sec=>{
+    const d=document.createElement('div');d.className='sec';
+    const tc=sec.tc?'stag '+sec.tc:'stag orange';
+    d.innerHTML=`<button class="shdr" onclick="toggleSec('${sec.id}')">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px">
+        <span class="${tc}">${sec.tag}</span>
+        <span class="st">${sec.title}</span>
+      </div>
+      <span class="sarr" id="sa-${sec.id}">▼</span>
+    </button>
+    <div class="sbody" id="sb-${sec.id}">
+      ${sec.items.map(i=>`<div class="ci ${i.c}"><div class="ch">${i.h}</div><div class="cb">${i.b}</div></div>`).join('')}
+      ${sec.keybox?`<div class="keybox"><div class="kl">🔑 Key Points</div>${sec.keybox}</div>`:''}
+    </div>`;
+    c.appendChild(d);
+  });
+}
+
+function toggleSec(id){
+  const b=document.getElementById('sb-'+id);
+  const a=document.getElementById('sa-'+id);
+  const open=b.classList.toggle('open');
+  a.textContent=open?'▲':'▼';
+}
+
+function buildTestList(){
+  const c=document.getElementById('test-list');
+  tests.forEach((t,i)=>{
+    const tf=t.questions.filter(q=>q.type==='tf').length;
+    const mc=t.questions.filter(q=>q.type==='mc').length;
+    const d=document.createElement('div');d.className='tc';
+    d.innerHTML=`<div class="tct">${t.title}</div>
+    <div class="tcd">${t.desc}${tf>0?`<span class="badge btf">${tf} T/F</span>`:''}${mc>0?`<span class="badge bmc">${mc} MC</span>`:''}</div>
+    <button class="btn-s" onclick="startTest(${i})">Start Test</button>`;
+    c.appendChild(d);
+  });
+}
+
+function startTest(i){
+  curTest=i;answers={};submitted=false;
+  const t=tests[i];
+  document.getElementById('at-title').textContent=t.title;
+  document.getElementById('at-desc').textContent=t.desc;
+  document.getElementById('score-box').innerHTML='';
+  renderProg();renderQs();renderSub();
+  document.getElementById('pg-tests').classList.remove('active');
+  document.getElementById('pg-test').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function renderProg(){
+  if(submitted){document.getElementById('pbar-wrap').style.display='none';return;}
+  document.getElementById('pbar-wrap').style.display='block';
+  const t=tests[curTest];
+  const done=Object.keys(answers).length;
+  document.getElementById('p-txt').textContent=`${done}/${t.questions.length}`;
+  document.getElementById('p-fil').style.width=`${(done/t.questions.length)*100}%`;
+}
+
+function renderQs(){
+  const t=tests[curTest];
+  const c=document.getElementById('q-container');
+  c.innerHTML='';
+  t.questions.forEach((q,qi)=>{
+    const ch=answers[qi];const cor=q.ans;const isc=ch===cor;const istf=q.type==='tf';
+    let cc='qcard';if(submitted)cc+=' '+(isc?'cor':'wrg');
+    const opts=q.opts.map((o,oi)=>{
+      let cls='opt';
+      if(submitted){if(oi===cor)cls+=' ca';else if(oi===ch&&!isc)cls+=' wa';}
+      else if(oi===ch)cls+=' sel';
+      const lbl=istf?(oi===0?'T.':'F.'):String.fromCharCode(65+oi)+'.';
+      const lc=(submitted&&oi===cor)?'ol cl':'ol';
+      const tk=submitted?(oi===cor?' ✓':(oi===ch&&!isc?' ✗':'')):'';
+      return`<div class="${cls}" onclick="pick(${qi},${oi})"><span class="${lc}">${lbl}</span><span>${o}${tk}</span></div>`;
+    }).join('');
+    const ex=submitted?`<div class="expl"><strong>Explanation: </strong>${q.ex}</div>`:'';
+    c.innerHTML+=`<div class="${cc}"><div class="qtop"><span class="qnum">Q${qi+1}</span>${istf?'<span class="qtfb">T/F</span>':''}<span class="qt">${q.q}</span></div><div class="opts">${opts}${ex}</div></div>`;
+  });
+}
+
+function pick(qi,oi){
+  if(submitted)return;
+  answers[qi]=oi;
+  renderProg();renderQs();renderSub();
+}
+
+function renderSub(){
+  const t=tests[curTest];
+  const total=t.questions.length;
+  const done=Object.keys(answers).length;
+  const all=done===total;
+  const c=document.getElementById('sub-container');
+  if(!submitted){
+    c.innerHTML=`<button class="bsub${all?' rdy':''}" onclick="doSub()">${all?'Submit Answers':'Answer all questions to submit ('+done+'/'+total+')'}</button>`;
+  }else{
+    const score=t.questions.filter((q,i)=>answers[i]===q.ans).length;
+    const pct=Math.round((score/total)*100);
+    const col=pct>=80?'#22c55e':pct>=60?'#d97706':'#dc2626';
+    const bg=pct>=80?'rgba(34,197,94,0.1)':pct>=60?'rgba(217,119,6,0.08)':'rgba(220,38,38,0.08)';
+    const bdr=pct>=80?'#22c55e':pct>=60?'#d97706':'#dc2626';
+    const msg=pct>=80?'🎃 Killing it!':pct>=60?'Getting there — review the explanations.':'Study time — read each explanation carefully.';
+    document.getElementById('score-box').innerHTML=`<div class="sbox" style="background:${bg};border:1px solid ${bdr}"><div class="snum" style="color:${col}">${score}/${total} (${pct}%)</div><div class="smsg">${msg}</div></div>`;
+    c.innerHTML=`<div class="bbtns"><button class="brt" onclick="startTest(${curTest})">🔄 Retake</button><button class="bat" onclick="showTests()">← All Tests</button></div>`;
+  }
+}
+
+function doSub(){
+  if(Object.keys(answers).length<tests[curTest].questions.length)return;
+  submitted=true;
+  document.getElementById('pbar-wrap').style.display='none';
+  renderQs();renderSub();window.scrollTo(0,0);
+}
+
+buildGuide();
+buildTestList();
+</script>
+</body>
+</html>
